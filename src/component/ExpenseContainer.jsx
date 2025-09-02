@@ -11,7 +11,7 @@ function ExpenseContainer() {
 
   function addExpense(title,amount){
       try {
-        const newExpense = fetch("http://localhost:3333/post",{
+        const newExpense = fetch("https://expensetrackerproject-scsj.onrender.com/post",{
           method:"POST",
           headers:{"Content-Type":"application/json"},
           body:JSON.stringify({title,amount})
@@ -23,7 +23,7 @@ function ExpenseContainer() {
   }
 
   async function getExpense(){
-    const response = await fetch("http://localhost:3333/get");
+    const response = await fetch("https://expensetrackerproject-scsj.onrender.com/get");
     const data = await response.json();
     setExpense(data.expenses);
   }
@@ -33,7 +33,7 @@ function ExpenseContainer() {
   },[]);
 
   async function deleteExpense(id){
-      await fetch(`http://localhost:3333/delete/${id}`,{
+      await fetch(`https://expensetrackerproject-scsj.onrender.com/delete/${id}`,{
         method:"DELETE"
       });
       getExpense();
